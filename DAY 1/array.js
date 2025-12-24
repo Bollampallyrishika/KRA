@@ -16,6 +16,7 @@ console.log(arr3[2]);
 console.log(arr3[6]);
 console.log(arr3.length);
 
+
 let arr4=[]
 console.log(arr4);
 
