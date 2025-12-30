@@ -1,4 +1,6 @@
-
+/* ================================
+   INTERFACES
+================================ */
 
 // Interface for API User
 interface User {
@@ -15,8 +17,9 @@ interface ApiResponse<T> {
   message?: string;
 }
 
-  // CLASSES
-
+/* ================================
+   CLASSES
+================================ */
 
 class UserService {
   private users: User[] = [];
@@ -38,7 +41,9 @@ class UserService {
   }
 }
 
-   //GENERICS
+/* ================================
+   GENERICS
+================================ */
 
 function wrapResponse<T>(data: T): ApiResponse<T> {
   return {
@@ -47,9 +52,9 @@ function wrapResponse<T>(data: T): ApiResponse<T> {
   };
 }
 
-
-  // UTILITY TYPES
-
+/* ================================
+   UTILITY TYPES
+================================ */
 
 // Partial → for update use case
 type UpdateUser = Partial<User>;
@@ -60,9 +65,9 @@ type UserPreview = Pick<User, "id" | "name">;
 // Omit → removing sensitive fields
 type SafeUser = Omit<User, "email">;
 
-
-  // IMPLEMENTATION / USE CASE
-
+/* ================================
+   IMPLEMENTATION / USE CASE
+================================ */
 
 const userService = new UserService();
 
