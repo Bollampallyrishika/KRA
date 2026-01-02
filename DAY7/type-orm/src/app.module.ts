@@ -10,7 +10,12 @@ import { ProfileModule } from './profile/profile.module';
 import { PostModule } from './post/post.module';
 import { RoleModule } from './role/role.module';
 import { AuthModule } from './auth/auth.module';
-import { DynProModule } from './dyn-pro/dyn-pro.module'; // 👈 ADD
+import { DynProModule } from './dyn-pro/dyn-pro.module';
+
+// ✅ ADD THESE
+import { AppLifecycle } from './lifecycle/app.lifecycle';
+import { DbLifecycle } from './lifecycle/db.lifecycle';
+import { ModuleLifecycle } from './lifecycle/module.lifecycle';
 
 @Module({
   imports: [
@@ -30,9 +35,16 @@ import { DynProModule } from './dyn-pro/dyn-pro.module'; // 👈 ADD
     PostModule,
     RoleModule,
 
-    DynProModule.registerAsync(), // 👈 ADD (Dynamic Module)
+    DynProModule.registerAsync(),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+
+    // ✅ ADD ONLY THIS
+    AppLifecycle,
+    DbLifecycle,
+    ModuleLifecycle,
+  ],
 })
 export class AppModule {}
